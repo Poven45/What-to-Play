@@ -1,14 +1,22 @@
-import { HStack, Image } from '@chakra-ui/react'
-import logo from '../assets/WhatToPlayTransparent.png'
-import React from 'react'
+import { HStack, Image, useColorMode } from "@chakra-ui/react";
+import logoDark from "../assets/WhatToPlayTransparentDark.png";
+import logoLight from "../assets/WhatToPlayTransparentLight.png";
+import ColorModeSwitch from "./ColorModeSwitch";
+import React from "react";
 
 const NavBar = () => {
-  return (
-    <HStack>
-      <Image src={logo} boxSize='7em' alt="logo"/>
-      <h1>NavBar</h1>
-    </HStack>
-  )
-}
+	const { colorMode } = useColorMode();
+	return (
+		<HStack justifyContent={"space-between"} p={4}>
+			<Image
+				src={colorMode === "dark" ? logoDark : logoLight}
+				boxSize="8em"
+				alt="logo"
+			/>
+			<h1>NavBar</h1>
+			<ColorModeSwitch />
+		</HStack>
+	);
+};
 
 export default NavBar;
