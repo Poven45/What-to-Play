@@ -2,7 +2,6 @@ import { HStack, Image, useColorMode } from "@chakra-ui/react";
 import logoDark from "../assets/WhatToPlayTransparentDark.png";
 import logoLight from "../assets/WhatToPlayTransparentLight.png";
 import ColorModeSwitch from "./ColorModeSwitch";
-import React from "react";
 
 const NavBar = () => {
 	const { colorMode } = useColorMode();
