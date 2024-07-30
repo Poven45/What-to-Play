@@ -1,5 +1,5 @@
 import { Game } from "../hooks/useGames";
-import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
+import { Card, CardBody, Heading, HStack, Image, useColorMode } from "@chakra-ui/react";
 import PlatformIcons from "./PlatformIcons";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
@@ -9,8 +9,9 @@ interface Props {
 }
 
 const GameCard = ({ game }: Props) => {
+	const { colorMode } = useColorMode();
 	return (
-		<Card>
+		<Card bg={colorMode === "dark" ? "gray.800" : "gray.300"}>
 			<Image src={getCroppedImageUrl(game.background_image)} alt={`game image of ${game.name}`} />
 			<CardBody>
 				<Heading size="xl">{game.name}</Heading>
