@@ -2,6 +2,7 @@ import { HStack, Image, useColorMode } from "@chakra-ui/react";
 import logoDark from "../assets/WhatToPlayTransparentDark.png";
 import logoLight from "../assets/WhatToPlayTransparentLight.png";
 import ColorModeSwitch from "./ColorModeSwitch";
+import Search from "./Search";
 
 const NavBar = () => {
 	const { colorMode } = useColorMode();
@@ -12,7 +13,7 @@ const NavBar = () => {
 				boxSize="8em"
 				alt="logo"
 			/>
-			<h1>NavBar</h1>
+			<Search />
 			<ColorModeSwitch />
 		</HStack>
 	);

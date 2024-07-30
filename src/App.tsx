@@ -33,7 +33,7 @@ function App() {
 				<NavBar />
 			</GridItem>
 			<Show above="lg">
-				<GridItem area="aside" paddingX="16px" margin={1.5} bg={colorMode === "dark" ? "gray.700" : "gray.100"} borderRadius={10}>
+				<GridItem area="aside" paddingX="16px"  margin={1.5} bg={colorMode === "dark" ? "gray.700" : "gray.100"} borderRadius={10}>
 					<GenreList pickedGenre={gameQuery.genre} onPickGenre={(genre) => setGameQuery({...gameQuery, genre})}/>
 				</GridItem>
 			</Show>
