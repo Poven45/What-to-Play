@@ -4,7 +4,11 @@ import logoLight from "../assets/WhatToPlayTransparentLight.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 import Search from "./Search";
 
-const NavBar = () => {
+interface Props {
+	onSearch: (searchText: string) => void;
+}
+
+const NavBar = ({ onSearch }: Props) => {
 	const { colorMode } = useColorMode();
 	return (
 		<HStack justifyContent={"space-between"} p={4}>
@@ -13,7 +17,7 @@ const NavBar = () => {
 				boxSize="8em"
 				alt="logo"
 			/>
-			<Search />
+			<Search onSearch={onSearch}/>
 			<ColorModeSwitch />
 		</HStack>
 	);
