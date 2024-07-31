@@ -8,22 +8,24 @@ export interface Platform {
 }
 
 export interface Game {
-	id: number;
-	name: string;
+    id: number;
+    name: string;
     background_image: string;
     parent_platforms: { platform: Platform }[];
     metacritic: number;
 }
 
-const useGames = (gameQuery: GameQuery) => 
-    useData<Game>("/games", { 
-        params: { 
-            genres: gameQuery.genre?.id, 
+const useGames = (gameQuery: GameQuery) =>
+    useData<Game>("/games", {
+        params: {
+            genres: gameQuery.genre?.id,
             platforms: gameQuery.platform?.id,
             ordering: gameQuery.sortOrder,
-            search: gameQuery.searchText
+            search: gameQuery.searchText,
+            metacritic: "1, 100"
         },
-    }, 
+    },
         [gameQuery]);
+        
 
 export default useGames;
