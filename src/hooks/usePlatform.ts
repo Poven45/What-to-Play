@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Response } from "./useData.ts";
-import apiClient from "../services/api-client.ts";
+import apiClient, { Response } from "../services/api-client.ts";
 import platforms from "../data/platforms.ts";
 
 interface Platform {
