@@ -4,10 +4,10 @@ import {
     Button,
     MenuList,
     MenuItem,
-    useColorMode,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { Platform } from "../hooks/usePlatform";
+import ButtonStyle from "../services/buttonStyle";
 
 interface Props {
     onPickSortOrder: (sortOrder: string) => void;
@@ -27,30 +27,30 @@ const SortSelector = ({ onPickSortOrder, sortOrder, platforms }: Props) => {
 
     const currentSortOrder = sortOrders.find(order => order.value === sortOrder);
 
-    const { colorMode } = useColorMode();
+    const buttonStyle = ButtonStyle();
     return (
-        <Menu>
-            <MenuButton
-                as={Button}
-                rightIcon={<BsChevronDown />}
-                bg={colorMode === "dark" ? "gray.800" : "gray.300"}
-            >
-                Sort by: {currentSortOrder?.label || "Relevance"}
-            </MenuButton>
-            <MenuList>
-                {sortOrders.map((order) => (
-                    <MenuItem 
-                        onClick={() => onPickSortOrder(order.value)} 
-                        key={order.value} 
-                        value={order.value}
-                        isDisabled={order.value === "rating" && !platforms}
-                    >
-                        {order.label}
-                    </MenuItem>
-                ))}
-            </MenuList>
-        </Menu>
-    );
+		<Menu>
+			<MenuButton
+				as={Button}
+				rightIcon={<BsChevronDown />}
+				{...buttonStyle}
+			>
+				Sort by: {currentSortOrder?.label || "Relevance"}
+			</MenuButton>
+			<MenuList>
+				{sortOrders.map((order) => (
+					<MenuItem
+						onClick={() => onPickSortOrder(order.value)}
+						key={order.value}
+						value={order.value}
+						isDisabled={order.value === "rating" && !platforms}
+					>
+						{order.label}
+					</MenuItem>
+				))}
+			</MenuList>
+		</Menu>
+	);
 };
 
 export default SortSelector;

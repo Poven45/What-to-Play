@@ -1,6 +1,7 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList, useColorMode } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatform, { Platform } from "../hooks/usePlatform";
+import ButtonStyle from "../services/buttonStyle";
 
 interface PlatformSelectorProps {
     onPickPlatform: (platform: Platform) => void;
@@ -9,12 +10,12 @@ interface PlatformSelectorProps {
 
 const PlatformSelector = ({ onPickPlatform, pickedPlatform }: PlatformSelectorProps) => {
     const { data, error } = usePlatform();
-    const { colorMode } = useColorMode();
+    const buttonStyle = ButtonStyle();
 
     if (error) return null;
     return (
         <Menu>
-            <MenuButton as={Button} rightIcon={<BsChevronDown />} bg={colorMode === "dark" ? "gray.800" : "gray.300"}>
+            <MenuButton as={Button} rightIcon={<BsChevronDown /> } {...buttonStyle} >
                 {pickedPlatform?.name || "Platforms"}
             </MenuButton>
             <MenuList>
