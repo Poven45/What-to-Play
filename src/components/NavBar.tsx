@@ -1,4 +1,4 @@
-import { Button, HStack, Image, useColorMode } from "@chakra-ui/react";
+import { HStack, Image, useColorMode } from "@chakra-ui/react";
 import logoDark from "../assets/WhatToPlayTransparentDark.png";
 import logoLight from "../assets/WhatToPlayTransparentLight.png";
 import ColorModeSwitch from "./ColorModeSwitch";
@@ -15,20 +15,21 @@ const NavBar = ({ onSearch }: Props) => {
 		window.location.reload();
 	};
 	return (
-		<HStack 
-			justifyContent="space-between" 
-			p={4} 
+		<HStack
+			justifyContent="space-between"
+			p={4}
 			bg={colorMode === "dark" ? "gray.800" : "white"} // Add this line
 			boxShadow="md" // Optional: adds a subtle shadow
 		>
-			<Button variant="link" onClick={handleLogoClick}>
-				<Image
-					src={colorMode === "dark" ? logoDark : logoLight}
-					boxSize="8em"
-					alt="logo"
-				/>
-			</Button>
-			<Search onSearch={onSearch}/>
+			<Image
+				src={colorMode === "dark" ? logoDark : logoLight}
+				onClick={handleLogoClick}
+				boxSize={"8em"}
+				alt="logo"
+				cursor="pointer"
+				_hover={ { opacity: 0.85 } }
+			/>
+			<Search onSearch={onSearch} />
 			<ColorModeSwitch />
 		</HStack>
 	);
