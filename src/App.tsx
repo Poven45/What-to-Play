@@ -10,15 +10,13 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState, useEffect } from "react";
-import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./hooks/usePlatform";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
-	genre: Genre | null;
-	platform: Platform | null;
+	genreId?: number;
+	platformId?: number;
 	sortOrder: string;
 	searchText: string;
 }
@@ -32,7 +30,6 @@ function App() {
 	// This effect runs only once when the component mounts
 	useEffect(() => {
 		window.scrollTo(0, 0);
-		
 	}, []);
 
 	useEffect(() => {
@@ -84,9 +81,9 @@ function App() {
 					borderRadius={10}
 				>
 					<GenreList
-						pickedGenre={gameQuery.genre}
+						pickedGenreId={gameQuery.genreId}
 						onPickGenre={(genre) =>
-							setGameQuery({ ...gameQuery, genre })
+							setGameQuery({ ...gameQuery, genreId: genre.id })
 						}
 					/>
 				</GridItem>
@@ -101,16 +98,16 @@ function App() {
 					<GameHeading gameQuery={gameQuery} />
 					<HStack spacing={4} marginTop={4}>
 						<PlatformSelector
-							pickedPlatform={gameQuery.platform}
+							pickedPlatformId={gameQuery.platformId}
 							onPickPlatform={(platform) =>
 								setGameQuery({
 									...gameQuery,
-									platform: platform,
+									platformId: platform.id,
 								})
 							}
 						/>
 						<SortSelector
-							platforms={gameQuery.platform}
+							platforms={gameQuery.platformId}
 							sortOrder={gameQuery.sortOrder}
 							onPickSortOrder={(sortOrder) =>
 								setGameQuery({ ...gameQuery, sortOrder })

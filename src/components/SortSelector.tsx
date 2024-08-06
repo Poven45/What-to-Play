@@ -12,7 +12,7 @@ import ButtonStyle from "../services/buttonStyle";
 interface Props {
     onPickSortOrder: (sortOrder: string) => void;
     sortOrder: string;
-    platforms: Platform | null;
+    platforms?: Platform;
 }
 
 const SortSelector = ({ onPickSortOrder, sortOrder, platforms }: Props) => {
