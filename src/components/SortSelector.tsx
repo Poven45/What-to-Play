@@ -7,7 +7,7 @@ import {
     useColorMode,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import { Platform } from "../hooks/useGames";
+import { Platform } from "../hooks/usePlatform";
 
 interface Props {
     onPickSortOrder: (sortOrder: string) => void;
