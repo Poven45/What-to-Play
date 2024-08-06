@@ -1,6 +1,6 @@
 import { HStack, Image, useColorMode } from "@chakra-ui/react";
-import logoDark from "../assets/WhatToPlayTransparentDark.png";
-import logoLight from "../assets/WhatToPlayTransparentLight.png";
+import logoDark from "../assets/WhatToPlayDark.svg";
+import logoLight from "../assets/WhatToPlayLight.svg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import Search from "./Search";
 
@@ -28,6 +28,8 @@ const NavBar = ({ onSearch }: Props) => {
 				alt="logo"
 				cursor="pointer"
 				_hover={ { opacity: 0.85 } }
+				draggable="false"
+				pointerEvents={"stroke"}
 			/>
 			<Search onSearch={onSearch} />
 			<ColorModeSwitch />
