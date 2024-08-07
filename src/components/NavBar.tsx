@@ -4,11 +4,7 @@ import logoLight from "../assets/WhatToPlayLight.svg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import Search from "./Search";
 
-interface Props {
-	onSearch: (searchText: string) => void;
-}
-
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
 	const { colorMode } = useColorMode();
 	const handleLogoClick = () => {
 		window.scrollTo(0, 0);
@@ -31,7 +27,7 @@ const NavBar = ({ onSearch }: Props) => {
 				draggable="false"
 				pointerEvents={"stroke"}
 			/>
-			<Search onSearch={onSearch} />
+			<Search />
 			<ColorModeSwitch />
 		</HStack>
 	);

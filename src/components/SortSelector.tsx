@@ -8,14 +8,13 @@ import {
 import { BsChevronDown } from "react-icons/bs";
 import { Platform } from "../hooks/usePlatform";
 import ButtonStyle from "../services/buttonStyle";
+import useGameQueryStore from "../store";
 
 interface Props {
-    onPickSortOrder: (sortOrder: string) => void;
-    sortOrder: string;
-    platforms?: Platform;
+    platforms?: Platform[];
 }
 
-const SortSelector = ({ onPickSortOrder, sortOrder, platforms }: Props) => {
+const SortSelector = ( { platforms }: Props) => {
     const sortOrders = [
         { value: "", label: "Relevance" },
         { value: "name", label: "Name" },
@@ -25,6 +24,8 @@ const SortSelector = ({ onPickSortOrder, sortOrder, platforms }: Props) => {
         { value: "rating", label: "Average rating" },
     ];
 
+	const sortOrder = useGameQueryStore(s => s.gameQuery.sortOrder);
+	const setSortOrder = useGameQueryStore(s => s.setSortOrder);
     const currentSortOrder = sortOrders.find(order => order.value === sortOrder);
 
     const buttonStyle = ButtonStyle();
@@ -40,7 +41,7 @@ const SortSelector = ({ onPickSortOrder, sortOrder, platforms }: Props) => {
 			<MenuList>
 				{sortOrders.map((order) => (
 					<MenuItem
-						onClick={() => onPickSortOrder(order.value)}
+						onClick={() => setSortOrder(order.value)}
 						key={order.value}
 						value={order.value}
 						isDisabled={order.value === "rating" && !platforms}
