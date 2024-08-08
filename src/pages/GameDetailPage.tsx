@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useGame from "../entities/useGame";
 import { Box, Heading, Spinner, Text, useColorMode } from "@chakra-ui/react";
+import ExpandableText from "../components/ExpandText";
 
 const GameDetailPage = () => {
 	const { slug } = useParams();
@@ -21,7 +22,7 @@ const GameDetailPage = () => {
 			bg={colorMode === "dark" ? "gray.700" : "gray.100"}
 		>
 			<Heading>{game.name}</Heading>
-			<Text>{game.description_raw}</Text>
+			<ExpandableText>{game.description_raw}</ExpandableText>
 		</Box>
 	);
 };

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
-import { Platform } from "../hooks/usePlatforms";
+import { Platform } from "../entities/usePlatforms";
 
 export interface Game {
 	id: number;

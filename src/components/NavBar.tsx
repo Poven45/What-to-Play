@@ -11,7 +11,7 @@ const NavBar = () => {
 
 	const handleLogoClick = () => {
 		window.scrollTo(0, 0);
-		navigate("/");
+		if(window.location.pathname !== "/") navigate("/");
 		window.location.reload();
 	};
 
@@ -28,7 +28,7 @@ const NavBar = () => {
 				boxSize={"8em"}
 				alt="logo"
 				cursor="pointer"
-				_hover={{ opacity: 0.85 }}
+				_hover={{ opacity: 0.85, transform: "scale(1.025)", transition: "all 0.2s ease-in-out"}}
 				draggable="false"
 				pointerEvents={"stroke"}
 			/>
