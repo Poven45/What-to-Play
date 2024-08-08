@@ -1,9 +1,29 @@
-import React from 'react'
+import React from "react";
+import { useParams } from "react-router-dom";
+import useGame from "../entities/useGame";
+import { Box, Heading, Spinner, Text, useColorMode } from "@chakra-ui/react";
 
 const GameDetailPage = () => {
-  return (
-    <div>GameDetailPage</div>
-  )
-}
+	const { slug } = useParams();
+	const { data: game, isLoading, error } = useGame(slug!);
 
-export default GameDetailPage
+	if (isLoading) return <Spinner />;
+
+	if (error || !game) throw error;
+
+	const { colorMode } = useColorMode();
+
+	return (
+		<Box
+			borderRadius={10}
+			padding={5}
+			margin={5}
+			bg={colorMode === "dark" ? "gray.700" : "gray.100"}
+		>
+			<Heading>{game.name}</Heading>
+			<Text>{game.description_raw}</Text>
+		</Box>
+	);
+};
+
+export default GameDetailPage;

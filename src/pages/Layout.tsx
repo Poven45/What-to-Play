@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import { Outlet } from "react-router-dom";
-import { GridItem } from "@chakra-ui/react";
+import { Box, GridItem } from "@chakra-ui/react";
 
 const Layout = () => {
 	const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -39,6 +39,7 @@ const Layout = () => {
 			>
 				<NavBar />
 			</GridItem>
+
 			<Outlet />
 		</>
 	);

@@ -1,35 +1,31 @@
-import {
-    Menu,
-    MenuButton,
-    Button,
-    MenuList,
-    MenuItem,
-} from "@chakra-ui/react";
+import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import { Platform } from "../hooks/usePlatform";
+import { Platform } from "../hooks/usePlatforms";
 import ButtonStyle from "../services/buttonStyle";
 import useGameQueryStore from "../store";
 
 interface Props {
-    platforms?: Platform[];
+	platforms?: Platform[];
 }
 
-const SortSelector = ( { platforms }: Props) => {
-    const sortOrders = [
-        { value: "", label: "Relevance" },
-        { value: "name", label: "Name" },
-        { value: "metacritic", label: "Popularity" },
-        { value: "-added", label: "Date added" },
-        { value: "-released", label: "Release date" },
-        { value: "rating", label: "Average rating" },
-    ];
+const SortSelector = ({ platforms }: Props) => {
+	const sortOrders = [
+		{ value: "", label: "Relevance" },
+		{ value: "name", label: "Name" },
+		{ value: "metacritic", label: "Popularity" },
+		{ value: "-added", label: "Date added" },
+		{ value: "-released", label: "Release date" },
+		{ value: "rating", label: "Average rating" },
+	];
 
-	const sortOrder = useGameQueryStore(s => s.gameQuery.sortOrder);
-	const setSortOrder = useGameQueryStore(s => s.setSortOrder);
-    const currentSortOrder = sortOrders.find(order => order.value === sortOrder);
+	const sortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
+	const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
+	const currentSortOrder = sortOrders.find(
+		(order) => order.value === sortOrder
+	);
 
-    const buttonStyle = ButtonStyle();
-    return (
+	const buttonStyle = ButtonStyle();
+	return (
 		<Menu>
 			<MenuButton
 				as={Button}

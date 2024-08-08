@@ -1,4 +1,10 @@
-import useGenres from "./useGenres";
+import useGenres from "../hooks/useGenres";
+
+export interface Genre {
+	id: number;
+	name: string;
+	image_background: string;
+}
 
 const useGenre = (id?: number) => {
 	const { data: genres } = useGenres();

@@ -7,7 +7,7 @@ interface Props {
 
 const GameContainer = ({children}: Props) => {
   return (
-    <Box width="100%" borderRadius={10} overflow={"hidden"}>
+    <Box _hover={{ boxShadow: "lg", transform: "scale(1.05)", transition: "all 0.15s ease-in-out" }} width="100%" borderRadius={10} overflow={"hidden"}>
         {children}
     </Box>
   )

@@ -4,16 +4,20 @@ import HomePage from "./pages/HomePage";
 import GameDetailPage from "./pages/GameDetailPage";
 import ErrorPage from "./pages/ErrorPage";
 
-const router = createBrowserRouter([
+const routes = [
 	{
-		path: "What-to-Play/",
+		path: "/",
 		element: <Layout />,
-        errorElement: <ErrorPage />,
+		errorElement: <ErrorPage />,
 		children: [
-            { index: true, element: <HomePage /> },
-            { path: "games/:id", element: <GameDetailPage /> },
-        ],
+			{ index: true, element: <HomePage /> },
+			{ path: "games/:slug", element: <GameDetailPage /> },
+		],
 	},
-]);
+];
+
+const router = createBrowserRouter(routes, {
+	basename: "/What-to-Play/",
+});
 
 export default router;

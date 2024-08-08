@@ -11,7 +11,8 @@ const NavBar = () => {
 
 	const handleLogoClick = () => {
 		window.scrollTo(0, 0);
-		navigate("/What-to-Play/");
+		navigate("/");
+		window.location.reload();
 	};
 
 	return (
