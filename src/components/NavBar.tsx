@@ -3,13 +3,17 @@ import logoDark from "../assets/WhatToPlayDark.svg";
 import logoLight from "../assets/WhatToPlayLight.svg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import Search from "./Search";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
 	const { colorMode } = useColorMode();
+	const navigate = useNavigate();
+
 	const handleLogoClick = () => {
 		window.scrollTo(0, 0);
-		window.location.reload();
+		navigate("/What-to-Play/");
 	};
+
 	return (
 		<HStack
 			justifyContent="space-between"
@@ -23,7 +27,7 @@ const NavBar = () => {
 				boxSize={"8em"}
 				alt="logo"
 				cursor="pointer"
-				_hover={ { opacity: 0.85 } }
+				_hover={{ opacity: 0.85 }}
 				draggable="false"
 				pointerEvents={"stroke"}
 			/>
