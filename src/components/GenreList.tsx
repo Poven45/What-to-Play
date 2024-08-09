@@ -11,14 +11,18 @@ import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import useGameQueryStore from "../store";
 
-
-
-const GenreList = () => {
+const GenreList = ({ onClose }) => {
 	const { data, isLoading, error } = useGenres();
 	const pickedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
 	const setPickedGenreId = useGameQueryStore((s) => s.setGenreId);
+
 	if (error) return null;
 	if (isLoading) return <Spinner />;
+
+	const handleGenreClick = (genreId) => {
+		setPickedGenreId(genreId);
+		if (onClose) onClose();
+	};
 
 	return (
 		<>
@@ -44,7 +48,7 @@ const GenreList = () => {
 										? "bold"
 										: "normal"
 								}
-								onClick={() => setPickedGenreId(genre.id)}
+								onClick={() => handleGenreClick(genre.id)}
 								fontSize="lg"
 								variant={"link"}
 							>

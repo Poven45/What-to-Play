@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
 import { Platform } from "../entities/usePlatforms";
 import { Genre } from "./useGenre";
-import { Publisher } from "./usePublisher";
+import { Publisher } from "./publisher";
 
 export interface Game {
 	id: number;

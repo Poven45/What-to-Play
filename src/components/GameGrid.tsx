@@ -18,7 +18,7 @@ const GameGrid = () => {
 	const skeletons = [1, 2, 3, 4, 5, 6];
 
 	if (error) {
-		return <Text>{error.message}</Text>;
+		return <Text padding={5}>{error.message} The API BREAKS EASILY SORRY REFRESH IN LIKE 10 SECONDS</Text>;
 	}
 
 	const buttonStyle = ButtonStyle();

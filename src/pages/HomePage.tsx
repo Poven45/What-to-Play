@@ -11,6 +11,7 @@ import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import GameHeading from "../components/GameHeading";
+import HamburgerMenu from "../components/HamburgerMenu";
 import useGameQueryStore from "../store";
 
 const HomePage = () => {
@@ -20,7 +21,7 @@ const HomePage = () => {
 	return (
 		<Grid
 			templateAreas={{
-				base: `"main"`,
+				base: `"header" "main"`,
 				lg: `"aside main"`,
 			}}
 			templateColumns={{
@@ -28,6 +29,11 @@ const HomePage = () => {
 				lg: "200px 1fr",
 			}}
 		>
+			<GridItem area="header" display={{ base: "block", lg: "none" }}>
+				<Box padding={2}>
+					<HamburgerMenu />
+				</Box>
+			</GridItem>
 			<Show above="lg">
 				<GridItem
 					area="aside"
@@ -36,7 +42,7 @@ const HomePage = () => {
 					bg={colorMode === "dark" ? "gray.700" : "gray.100"}
 					borderRadius={10}
 				>
-					<GenreList />
+					<GenreList onClose={null} />
 				</GridItem>
 			</Show>
 			<GridItem
