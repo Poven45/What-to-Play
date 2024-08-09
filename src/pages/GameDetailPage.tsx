@@ -6,6 +6,7 @@ import {
 	SimpleGrid,
 	Spinner,
 	useColorMode,
+	Flex,
 } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandText";
 import GameAttributes from "../components/GameAttributes";
@@ -23,30 +24,37 @@ const GameDetailPage = () => {
 	const { colorMode } = useColorMode();
 
 	return (
-		<SimpleGrid
-			borderRadius={10}
-			margin={5}
-			columns={{ base: 1, md: 2 }}
-			spacing={5}
-		>
-			<Box
-				bg={colorMode === "dark" ? "gray.700" : "gray.100"}
-				padding={5}
+		<Box margin={5}>
+			<SimpleGrid
 				borderRadius={10}
+				marginY={5}
+				columns={{ base: 1, md: 1 }}
+				spacing={5}
 			>
-				<Heading>{game.name}</Heading>
-				<ExpandableText>{game.description_raw}</ExpandableText>
-				<GameAttributes game={game} />
-			</Box>
-			<Box
-				bg={colorMode === "dark" ? "gray.700" : "gray.100"}
-				padding={5}
-				borderRadius={10}
-			>
-				<GameTrailer gameId={game.id} />
-				<GameScreenshots gameId={game.id} />
-			</Box>
-		</SimpleGrid>
+				<Box
+					bg={colorMode === "dark" ? "gray.700" : "gray.100"}
+					padding={5}
+					borderRadius={10}
+				>
+					<Flex direction={{ base: "column", lg: "row" }} gap={5}>
+						<Box flex="1">
+							<Heading>{game.name}</Heading>
+							<ExpandableText>
+								{game.description_raw}
+							</ExpandableText>
+							<GameAttributes game={game} />
+						</Box>
+						<Box
+							width={{ base: "100%", lg: "50%" }}
+							maxWidth="600px"
+						>
+							<GameTrailer gameId={game.id} />
+						</Box>
+					</Flex>
+				</Box>
+			</SimpleGrid>
+			<GameScreenshots gameId={game.id} />
+		</Box>
 	);
 };
 
