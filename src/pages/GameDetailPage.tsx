@@ -3,13 +3,14 @@ import useGame from "../entities/useGame";
 import {
 	Box,
 	Heading,
+	SimpleGrid,
 	Spinner,
 	useColorMode,
 } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandText";
-import GameAttributes from "../components/GameAttributes"
-import GameTrailer from "../components/GameTrailer"
-import GameScreenshots from "../components/GameScreenshots"
+import GameAttributes from "../components/GameAttributes";
+import GameTrailer from "../components/GameTrailer";
+import GameScreenshots from "../components/GameScreenshots";
 
 const GameDetailPage = () => {
 	const { slug } = useParams();
@@ -22,18 +23,30 @@ const GameDetailPage = () => {
 	const { colorMode } = useColorMode();
 
 	return (
-		<Box
+		<SimpleGrid
 			borderRadius={10}
-			padding={5}
 			margin={5}
-			bg={colorMode === "dark" ? "gray.700" : "gray.100"}
+			columns={{ base: 1, md: 2 }}
+			spacing={5}
 		>
-			<Heading>{game.name}</Heading>
-			<ExpandableText>{game.description_raw}</ExpandableText>
-			<GameAttributes game={game} />
-            <GameTrailer gameId={game.id} />
-            <GameScreenshots gameId={game.id} />
-		</Box>
+			<Box
+				bg={colorMode === "dark" ? "gray.700" : "gray.100"}
+				padding={5}
+				borderRadius={10}
+			>
+				<Heading>{game.name}</Heading>
+				<ExpandableText>{game.description_raw}</ExpandableText>
+				<GameAttributes game={game} />
+			</Box>
+			<Box
+				bg={colorMode === "dark" ? "gray.700" : "gray.100"}
+				padding={5}
+				borderRadius={10}
+			>
+				<GameTrailer gameId={game.id} />
+				<GameScreenshots gameId={game.id} />
+			</Box>
+		</SimpleGrid>
 	);
 };
 
