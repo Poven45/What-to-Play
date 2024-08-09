@@ -1,23 +1,25 @@
-import React from 'react'
-import { Game } from '../entities/useGame'
-import { SimpleGrid, Text } from '@chakra-ui/react';
-import DefinitionItem from './DefinitionItem';
-import CriticScore from './CriticScore';
-
+import { SimpleGrid, Text, HStack } from "@chakra-ui/react";
+import CriticScore from "./CriticScore";
+import DefinitionItem from "./DefinitionItem";
+import { Game } from "../entities/useGame";
+import PlatformIcons from "./PlatformIcons"; // Import your PlatformIcons component
 
 interface Props {
-    game: Game;
+	game: Game;
 }
 
 const GameAttributes = ({ game }: Props) => {
-  return (
+	return (
 		<SimpleGrid columns={2} as="dl">
 			<DefinitionItem term="Platforms">
-				{game.parent_platforms?.map(({ platform }) => (
-					<Text key={platform.id}>{platform.name}</Text>
+				{game.parent_platforms.map(({ platform }) => (
+					<HStack key={platform.id} spacing={2} marginY={1}>
+						<PlatformIcons platforms={[platform]} />
+						<Text>{platform.name}</Text>
+					</HStack>
 				))}
 			</DefinitionItem>
-			<DefinitionItem term="Metacritic">
+			<DefinitionItem term="Metascore">
 				<CriticScore score={game.metacritic} />
 			</DefinitionItem>
 			<DefinitionItem term="Genres">
@@ -25,13 +27,13 @@ const GameAttributes = ({ game }: Props) => {
 					<Text key={genre.id}>{genre.name}</Text>
 				))}
 			</DefinitionItem>
-			<DefinitionItem term="Developers">
+			<DefinitionItem term="Publishers">
 				{game.publishers?.map((publisher) => (
 					<Text key={publisher.id}>{publisher.name}</Text>
 				))}
 			</DefinitionItem>
 		</SimpleGrid>
-  );
-}
+	);
+};
 
 export default GameAttributes;

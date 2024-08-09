@@ -11,7 +11,7 @@ const ErrorPage = () => {
 			<Text padding={5} >
 				{isRouteErrorResponse(error)
 					? "This page does not exist, click logo to go home"
-					: "Something unexpected happened, click logo to go home"}
+					: "Something unexpected happened, click logo to go home, THE API BREAKS EASILY SORRY REFRESH IN LIKE 10 SECONDS"}
 			</Text>
 		</>
 	);
